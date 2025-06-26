@@ -1,8 +1,9 @@
 class Livro:
-    def __init__(self, autor, nome, genero):
+    def __init__(self, autor, nome, genero, disponibilidade):
         self.autor = autor
         self.nome = nome
         self.genero = genero
+        self.disponibilidade = disponibilidade
 
 
 
