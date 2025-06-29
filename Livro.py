@@ -7,7 +7,7 @@ class Livro:
         self.autor = autor
         self.nome = nome
         self.genero = genero
-        self.expiracao
+        self.expiracao = expiracao
         self.disponivel = disponibilidade
 
         
