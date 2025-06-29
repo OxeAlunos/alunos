@@ -1,5 +1,5 @@
 class Livro:
-    def __init__(self, autor, nome, genero, expiracao=''):
+    def __init__(self, autor, nome, genero, disponibilidade, expiracao=''):
         #Expiração do Livro
         if genero == 'escolar' and not expiracao:
             raise ValueError("O livro é escolar porém não foi colocado uma expiração")
@@ -8,6 +8,7 @@ class Livro:
         self.nome = nome
         self.genero = genero
         self.expiracao
+        self.disponivel = disponibilidade
 
         
       
