@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from Biblioteca import Biblioteca
+from OBJLivro import OBJLivro
 from Livro import Livro
 import pandas as pd
 
@@ -7,35 +8,36 @@ import pandas as pd
 app = FastAPI()
 bib = Biblioteca()
 
-livroTeste1 = Livro('josé','a casa', 'terror', True)
-bib.livros.append(livroTeste1)
-
-
 @app.get('/')
 def mainRoute():
     return 'rota principal'
 
-@app.get('/emprestarLivro')
+@app.get('/livros')
+def listarLivros() -> list[OBJLivro]:
+    return bib.listarLivros()
+
+@app.post("/livros/adicionar")
+def adicionarLivro(livro: OBJLivro):
+    return bib.adicionarLivro(livro)
+
+@app.post('/livro/nome')
+def listar_por_nome(nome: str):
+    return bib.buscarTitulo()
+
+@app.post('/livro/autor')
+def listar_por_autor(aut: str):
+    return bib.buscarAutor(aut)
+
+@app.post('/livro/isbn')
+def listar_por_isbn(isbn: int):
+    return bib.buscarIsbn(isbn)
+
+
+@app.put('/livro/emprestar')
 def emprestarLivro():
     return bib.emprestarLivro(bib.livros[0])
 
-@app.get('/devolverLivro')
+@app.put('/livro/devolver')
 def devolverLivro():
     # nessa rota deve haver uma página com uma lista dos livros emprestados, né?
     return bib.devolverLivro(bib.livros[0])
-
-@app.get('/listarLivros')
-def listarLivros():
-    return bib.listarLivros()
-
-@app.post('/adicionarLivro')
-def adicionarLivro():
-    return bib.adicionarLivro()
-
-@app.post('/buscarTitulo')
-def buscarTitulo():
-    return bib.buscarTitulo()
-
-@app.post('/buscarAutor')
-def buscarAutor():
-    return bib.buscarAutor()
