@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from Biblioteca import Biblioteca
 from OBJLivro import OBJLivro
 from Livro import Livro
-import pandas as pd
+# import pandas as pd
 
 
 app = FastAPI()

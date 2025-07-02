@@ -5,9 +5,9 @@ class Biblioteca:
 
     def __init__(self):
         self.livrosPadrao = [
-            Livro('josé','a casa', 'terror', True, '1234567890123', '1'),
-            Livro('kaleb','sense life', 'ação', True, '1234567890123', '2'),
-            Livro('curió','dicas de mat', 'educação', True, '1234567890123', '3')
+            Livro('josé','a casa', 'terror', True, None , '1234567890123'),
+            Livro('kaleb','sense life', 'ação', True, None,'1234567890123'),
+            Livro('curió','dicas de mat', 'educação', True, '3', '1234567890123')
         ]
         self.livros = []
         self.livros.append(self.livrosPadrao)
@@ -30,8 +30,10 @@ class Biblioteca:
         return livrosListados
     
     def vizualizarDados(self, livro: Livro):
-        print(livro.autor, livro.nome, livro.genero, livro.expiracao,livro.disponivel, livro.isbn)
-        return f'{livro.autor}, {livro.nome}, {livro.genero}, {livro.disponivel}, {livro.expiracao}, {livro.isbn}'
+        print(f'{livro.autor}, {livro.nome}, {livro.genero}, {livro.disponivel}, {livro.expiracao}, {livro.isbn}')
+        return f'dados do requerido livro:' \
+            f'{livro.autor}, {livro.nome}, {livro.genero}, ' \
+            f'{livro.disponivel}, {livro.expiracao}, {livro.isbn}'
     
     def buscarAutor(self, aut: str):
         
@@ -67,7 +69,7 @@ class Biblioteca:
         return listIsbn
         
     def adicionarLivro(self, livro: OBJLivro):
-        self.livros.append(Livro(livro.nome, livro.autor, livro.genero, livro.expiracao, livro.disponivel, livro.isbn))
+        self.livros.append(Livro(livro.nome, livro.autor, livro.genero, livro.disponivel, livro.expiracao, livro.isbn))
         return 'livro adicionado com sucesso'
     
     def emprestarLivro(self, livro: OBJLivro):
