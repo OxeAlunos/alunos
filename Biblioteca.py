@@ -10,7 +10,8 @@ class Biblioteca:
             Livro('curió','dicas de mat', 'educação', True, '3', '1234567890123')
         ]
         self.livros = []
-        self.livros.append(self.livrosPadrao)
+        # self.livros.append(self.livrosPadrao)
+        self.livros.extend(self.livrosPadrao)
         
     def listarLivros(self):
         livrosListados = []
@@ -29,11 +30,12 @@ class Biblioteca:
             livrosListados.append(dadosLivros)
         return livrosListados
     
-    def vizualizarDados(self, livro: Livro):
-        print(f'{livro.autor}, {livro.nome}, {livro.genero}, {livro.disponivel}, {livro.expiracao}, {livro.isbn}')
-        return f'dados do requerido livro:' \
-            f'{livro.autor}, {livro.nome}, {livro.genero}, ' \
-            f'{livro.disponivel}, {livro.expiracao}, {livro.isbn}'
+    # faz basicamente a mesmo coisa que os métodos de busca
+    # def vizualizarDados(self, livro: Livro):
+    #     print(f'{livro.autor}, {livro.nome}, {livro.genero}, {livro.disponivel}, {livro.expiracao}, {livro.isbn}')
+    #     return f'dados do requerido livro:' \
+    #         f'{livro.autor}, {livro.nome}, {livro.genero}, ' \
+    #         f'{livro.disponivel}, {livro.expiracao}, {livro.isbn}'
     
     def buscarAutor(self, aut: str):
         
@@ -57,7 +59,7 @@ class Biblioteca:
 
         return listNome
     
-    def buscarIsbn(self, isbn:int):
+    def buscarIsbn(self, isbn:str):
            
         listIsbn: list[Livro] = []
         

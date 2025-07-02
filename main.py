@@ -14,22 +14,23 @@ def mainRoute():
 
 @app.get('/livros')
 def listarLivros() -> list[OBJLivro]:
-    return bib.listarLivros()
+    # return bib.listarLivros()
+    return bib.livros
 
 @app.post("/livros/adicionar")
 def adicionarLivro(livro: OBJLivro):
     return bib.adicionarLivro(livro)
 
-@app.post('/livro/nome')
-def listar_por_nome(nome: str):
-    return bib.buscarTitulo()
-
 @app.post('/livro/autor')
 def listar_por_autor(aut: str):
     return bib.buscarAutor(aut)
 
+@app.post('/livro/nome')
+def listar_por_nome(nome: str):
+    return bib.buscarTitulo(nome)
+
 @app.post('/livro/isbn')
-def listar_por_isbn(isbn: int):
+def listar_por_isbn(isbn: str):
     return bib.buscarIsbn(isbn)
 
 
