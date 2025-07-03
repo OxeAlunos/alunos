@@ -13,7 +13,7 @@ def mainRoute():
     return 'rota principal'
 
 @app.get('/livros')
-def listarLivros() -> list[OBJLivro]:
+def listarLivros():
     # return bib.listarLivros()
     return bib.livros
 
