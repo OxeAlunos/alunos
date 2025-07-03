@@ -1,24 +1,43 @@
 class Livro:
-    def __init__(self, autor, nome, genero, disponibilidade):
+    def __init__(self, autor, nome, genero, disponibilidade, expiracao='', isbn="",):
+        #Expiração do Livro
+        if genero == 'escolar' and not expiracao:
+            raise ValueError("O livro é escolar porém não foi colocado uma expiração")
+        
+        
         self.autor = autor
         self.nome = nome
         self.genero = genero
-        self.disponibilidade = disponibilidade
-        self.lista = []
-
-    def expirar_livro(self, genero, expiracao):
         self.expiracao = expiracao
-        super().__init__(genero)
-        if genero == 'Escolar':
+        self.disponivel = disponibilidade
+        self.isbn = isbn
 
-    def salvar_livro(self,):
+
+        #Livro ISBN, ISBN = int e string_isbn = string, converte int(isbn) para string(string_isbn)
+        string_isbn = str(isbn)
+        tamanho = len(string_isbn)
+        if isbn == '':
+            print(f'O ISbn é: {string_isbn}')
+            pass
+        elif isbn != '' and tamanho < 13:
+            raise ValueError("O ISBN está errado e/ou imcompleto")
+        elif isbn != '' and tamanho == 13:
+            pass
+        else:
+            raise ValueError("O ISBN está errado e/ou imcompleto")
         
-
-
-
-
     def __str__(self):
-        return f"Livro:   {self.nome}, Autor: {self.autor}, Genero: {self.genero}"
+
+        return f"Livro:{self.nome}, Autor: {self.autor}, Genero: {self.genero},ISBN: {self.isbn}, Expiração : {self.expiracao}"
     
-#Precisa colocar a expiração no caso de livros escolares
-#tem que fazer uma condição em que: se o livro for escolar, tem que colocar a expiração. Se não for, não pedir.
+livro = Livro('1984', 'George Owell', 'Ficção', 1234567890123
+ , '') 
+#livro.verifcar_caracter()
+print(livro.isbn)
+  
+
+#Fazer a Expiração do Livro, caso o Livro seja do genêro escolar
+#O isbn não é obrigatório, neste tópico ele se comporta que nem a expiração
+#Fazer uma verificação da quantidade de caracteres (tem que ser 13 caracteres)
+#o isbn vai ser do tipo int e para a verificação fazer a conversão para str
+
