@@ -37,6 +37,9 @@ class Biblioteca:
     #         f'{livro.autor}, {livro.nome}, {livro.genero}, ' \
     #         f'{livro.disponivel}, {livro.expiracao}, {livro.isbn}'
     
+
+
+
     def buscarAutor(self, aut: str):
         
         listAut: list[Livro] = []
@@ -60,15 +63,10 @@ class Biblioteca:
         return listNome
     
     def buscarIsbn(self, isbn:str):
-           
-        listIsbn: list[Livro] = []
-        
         for li in self.livros:
             li: Livro
             if li.isbn == isbn:
-                listIsbn.append(li)    
-
-        return listIsbn
+                return li
         
     def adicionarLivro(self, livro: OBJLivro):
         self.livros.append(Livro(livro.nome, livro.autor, livro.genero, livro.disponivel, livro.expiracao, livro.isbn))
@@ -85,6 +83,5 @@ class Biblioteca:
             livro.disponivel = True
             print("Livro devolvido!")
             return 'livro devolvido'
-            
     
 
