@@ -21,15 +21,17 @@ def listarLivros():
 def adicionarLivro(livro: OBJLivro):
     return bib.adicionarLivro(livro)
 
-@app.post('/livro/autor')
+# de POST para GET: POST retornava método not allowed 
+
+@app.get('/livro/autor')
 def listar_por_autor(aut: str):
     return bib.buscarAutor(aut)
 
-@app.post('/livro/nome')
+@app.get('/livro/nome')
 def listar_por_nome(nome: str):
     return bib.buscarTitulo(nome)
 
-@app.post('/livro/isbn')
+@app.get('/livro/isbn')
 def listar_por_isbn(isbn: str):
     return bib.buscarIsbn(isbn)
 
