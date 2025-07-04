@@ -1,12 +1,21 @@
 # *cof**cof**cof* and passou aqui *cof**cof**cof*
 
 class Usuario:
-    def __init__(self, nome, idade, cpf):
+    def __init__(self, nome, idade, cpf, email, telefone, endereco):
         self.nome = nome
         self.idade = idade
-        self.senha = cpf
+        self.cpf = cpf
+        self.email = email
+        self.telefone = telefone
+        self.endereco = endereco
 
-    def login():
-        return print('login')
-    def logoff():
-        return print('logoff')
+    def login(self):
+        print('login')
+    def logoff(self):
+        print('logoff')
+    
+
+    
+    
+    
+    

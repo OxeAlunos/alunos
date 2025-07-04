@@ -1,5 +1,6 @@
 from Livro import Livro
 from OBJLivro import OBJLivro
+from usuario import Usuario
 
 class Biblioteca:
 
@@ -69,22 +70,15 @@ class Biblioteca:
                 listIsbn.append(li)    
 
         return listIsbn
+    
+    def BuscarLivrosEmprestadosDeCadaUsusario(self, livro: OBJLivro):
+        livro.emprestados = not livro.disponivel
+        Usuario.__init__()
         
     def adicionarLivro(self, livro: OBJLivro):
         self.livros.append(Livro(livro.nome, livro.autor, livro.genero, livro.disponivel, livro.expiracao, livro.isbn))
         return 'livro adicionado com sucesso'
     
-    def emprestarLivro(self, livro: OBJLivro):
-        if livro.disponivel == True:
-            livro.disponivel = False
-            print("livro emprestado!")
-            return 'livro emprestado!'
-
-    def devolverLivro(self, livro: OBJLivro):
-        if livro.disponivel == False:
-            livro.disponivel = True
-            print("Livro devolvido!")
-            return 'livro devolvido'
-            
+    def atualizarDisponibilidadeDevolução(self, livro: OBJLivro):
+        self.disponibilidade = not livro.disponivel
     
-
