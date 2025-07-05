@@ -1,7 +1,10 @@
-from main import app, bib
+from rotasApi.rotaget import bib
 from OBJLivro import OBJLivro
+from fastapi import APIRouter
 
-@app.post("/livros/adicionar")
+router = APIRouter()
+
+@router.post("/livros/adicionar")
 def adicionarLivro(livro: OBJLivro):
     return bib.adicionarLivro(livro)
 

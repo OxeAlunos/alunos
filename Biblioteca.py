@@ -5,14 +5,7 @@ from usuario import Usuario
 class Biblioteca:
 
     def __init__(self):
-        self.livrosPadrao = [
-            Livro('josé','a casa', 'terror', True, None , '1234567890123'),
-            Livro('kaleb','sense life', 'ação', True, None,'1234567890123'),
-            Livro('curió','dicas de mat', 'educação', True, '3', '1234567890123')
-        ]
         self.livros = []
-        # self.livros.append(self.livrosPadrao)
-        self.livros.extend(self.livrosPadrao)
         
     def listarLivros(self):
         livrosListados = []

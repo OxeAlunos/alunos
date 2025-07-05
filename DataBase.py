@@ -7,7 +7,7 @@ class DataBase:
 
     def __init__(self):        
         
-        self.path = "C:/Users/aluno_pnd/Desktop/alunos/dados.xlsx"
+        self.path = "./dados.xlsx"
 
         self.books_sheet = 'Livros'
         self.users_sheet = 'Usuarios'

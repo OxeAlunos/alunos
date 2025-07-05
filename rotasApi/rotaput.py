@@ -1,11 +1,13 @@
-from main import app,bib
+from rotasApi.rotaget import bib
+from fastapi import APIRouter
+router = APIRouter()
 
 
-@app.put('/livro/emprestar')
+@router.put('/livro/emprestar')
 def emprestarLivro():
     return bib.emprestarLivro(bib.livros[0])
 
-@app.put('/livro/devolver')
+@router.put('/livro/devolver')
 def devolverLivro():
     # nessa rota deve haver uma página com uma lista dos livros emprestados, né?
     return bib.devolverLivro(bib.livros[0])

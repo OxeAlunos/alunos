@@ -1,25 +1,29 @@
-from main import app, bib 
+from fastapi import APIRouter
+from Biblioteca import Biblioteca
 
+bib = Biblioteca()
 
-@app.get('/')
+router = APIRouter()
+
+@router.get('/')
 def mainRoute():
     return 'rota principal'
 
-@app.get('/livros')
+@router.get('/livros')
 def listarLivros():
     # return bib.listarLivros()
     return bib.livros
 
 
-@app.get('/livro/autor')
+@router.get('/livro/autor')
 def listar_por_autor(aut: str):
     return bib.buscarAutor(aut)
 
-@app.get('/livro/nome')
+@router.get('/livro/nome')
 def listar_por_nome(nome: str):
     return bib.buscarTitulo(nome)
 
-@app.get('/livro/isbn')
+@router.get('/livro/isbn')
 def listar_por_isbn(isbn: str):
     return bib.buscarIsbn(isbn)
 

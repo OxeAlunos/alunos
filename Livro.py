@@ -8,9 +8,9 @@ class Livro:
             
         
         #Verificação do ISBN o Livro:
-        if isbn.isalpha():
+        if isbn is not None and isbn.isalpha():
             return False
-        if isbn != '' and len(isbn) < 13 or len(isbn) < 13:
+        if isbn is not None and len(isbn) < 13:
             raise ValueError("O ISBN está errado e/ou imcompleto")
         
         #Verificação do Ano de Publicação:
@@ -41,13 +41,8 @@ class Livro:
     def __str__(self):
 
         return f"Livro:{self.nome}, Autor: {self.autor}, Genero: {self.genero}, Editora: {self.editora}, ISBN: {self.isbn},Ano de Publicação : {self.ano_publicacao}, Expiração : {self.expiracao}"
-    
-livro = Livro('1984', 'George Owell', 'Ficção', 'Principis', '1234567890123', '1984')
-livro2 = Livro('Boiologia', 'Dr.Chpatim', 'Escolar', '2+2=5', '0123456789101', '2020') 
-print(f'{livro} \n {livro2}')
 
 
-  
 
 #Fazer a Expiração do Livro, caso o Livro seja do genêro escolar
 #O isbn não é obrigatório, neste tópico ele se comporta que nem a expiração
