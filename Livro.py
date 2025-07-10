@@ -9,15 +9,13 @@ class Livro:
         
         #Verificação do ISBN o Livro:
         if isbn is not None and isbn.isalpha():
-            return False
+            raise ValueError("O ISBN está errado e/ou imcompleto")
         if isbn is not None and len(isbn) < 13:
             raise ValueError("O ISBN está errado e/ou imcompleto")
         
         #Verificação do Ano de Publicação:
         if ano_publicacao.isalpha():
-            return False
-        
-
+            raise ValueError("O ANO DE PUBLICAÇÃO está errado e/ou imcompleto")
 
         self.autor = autor
         self.nome = nome

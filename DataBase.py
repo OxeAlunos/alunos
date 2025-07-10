@@ -3,44 +3,53 @@ from pandas import DataFrame
 from OBJLivro import OBJLivro 
 from Livro import Livro
 
-class DataBase:
 
-    def __init__(self):        
-        
-        self.path = "./dados.xlsx"
+path = "./dados.xlsx"
+books_sheet = 'Livros'
+users_sheet = 'Usuarios'
+lendings_sheet = 'Emprestimos'
+devolutions_sheet = 'Devolucoes'
 
-        self.books_sheet = 'Livros'
-        self.users_sheet = 'Usuarios'
-        self.lendings_sheet = 'Emprestimos'
-        self.devolutions_sheet = 'Devolucao'
+bdf = pd.read_excel(path, books_sheet)
+udf = pd.read_excel(path, users_sheet)
+ldf = pd.read_excel(path, lendings_sheet)
+ddf = pd.read_excel(path, devolutions_sheet)
 
-        self.bdf = pd.read_excel(self.path, self.books_sheet)
-        self.udf = pd.read_excel(self.path, self.users_sheet)
-        self.ldf = pd.read_excel(self.path, self.lendings_sheet)
-        self.ddf = pd.read_excel(self.path, self.devolutions_sheet)
+def adicionarLivro(livro):
+    novo_registro = pd.DataFrame(data={
+        'nome': [livro.nome],
+        'autor': [livro.autor],
+        'genero': [livro.genero], 
+        'isbn': [livro.isbn]
+        })
+    
+    global bdf
+    global path
+    bdf = pd.concat([bdf, novo_registro], ignore_index=True)
+    salvarDadosNoExcel()
+    # bdf.to_excel(path,books_sheet)
 
-    def adicionarLivro(self, livro: OBJLivro, dataFrame: DataFrame):
-        novo_registro = {
-            'nome': livro.nome,
-            'autor': livro.autor,
-            'genero': livro.genero, 
-            'expiracao': livro.expiracao, 
-            'disponivel': livro.disponivel,
-            'isbn': livro.isbn
-            }
-        
-        novo_bdf = pd.DataFrame([novo_registro])
-        df = pd.concat([dataFrame, novo_bdf])
-        return df
+def salvarDadosNoExcel():
+    with pd.ExcelWriter(path) as writer:  
+        bdf.to_excel(writer, books_sheet, index=False)
+        udf.to_excel(writer, users_sheet, index=False)
+        ldf.to_excel(writer, lendings_sheet, index=False)
+        ddf.to_excel(writer, devolutions_sheet, index=False)
+
+def listarLivros():
+    print(bdf)
+    # return bdf
+
+def listarEmprestimos():
+    return
 
 
+if __name__ == '__main__':
+   li = Livro('aaadw','adawd','awdawd','awdawd','1234567890123','2001')
+   adicionarLivro(li)
+   listarLivros()
 
-    def listarLivros(self):
-        print(self.bdf)
-        # return bdf
-
-    def listarEmprestimos():
-        return
-
-
- 
+    # bdf = bdf.drop(bdf.index)
+    # bdf = bdf.drop(columns= bdf.columns)
+    # salvarDadosNoExcel()
+    # listarLivros()
