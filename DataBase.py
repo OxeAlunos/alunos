@@ -2,6 +2,8 @@ import pandas as pd
 from pandas import DataFrame
 from OBJLivro import OBJLivro 
 from Livro import Livro
+from Usuario import Usuario
+from Endereco import Endereco
 
 
 path = "./dados.xlsx"
@@ -29,6 +31,21 @@ def adicionarLivro(livro):
     salvarDadosNoExcel()
     # bdf.to_excel(path,books_sheet)
 
+def adicionarUsuario(usuario: Usuario):
+    novo_registro = pd.DataFrame(data={
+        'nome': [usuario.nome],
+        'idade': [usuario.idade],
+        'cpf': [usuario.cpf], 
+        'email': [usuario.email],
+        'telefone': [usuario.telefone],
+        'endereco': [usuario.endereco]
+        })
+    
+    global udf
+    global path
+    udf = pd.concat([udf, novo_registro], ignore_index=True)
+    salvarDadosNoExcel()
+    
 def salvarDadosNoExcel():
     with pd.ExcelWriter(path) as writer:  
         bdf.to_excel(writer, books_sheet, index=False)

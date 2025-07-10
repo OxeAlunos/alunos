@@ -1,7 +1,7 @@
-# *cof**cof**cof* and passou aqui *cof**cof**cof*
+from Endereco import Endereco
 
 class Usuario:
-    def __init__(self, nome, idade, cpf, email, telefone, endereco):
+    def __init__(self, nome, idade, cpf, email, telefone, endereco: Endereco):
         self.nome = nome
         self.idade = idade
         self.cpf = cpf
