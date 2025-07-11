@@ -1,5 +1,5 @@
 from rotasApi.rotaget import bib
-from OBJLivro import OBJLivro
+from main.OBJLivro import OBJLivro
 from fastapi import APIRouter
 
 router = APIRouter()

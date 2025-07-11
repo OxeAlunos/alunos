@@ -1,4 +1,4 @@
-from Endereco import Endereco
+from main.Endereco import Endereco
 
 class Usuario:
     def __init__(self, nome, idade, cpf, email, telefone, endereco: Endereco):

@@ -1,9 +1,9 @@
 import pandas as pd
 from pandas import DataFrame
-from OBJLivro import OBJLivro 
-from Livro import Livro
-from Usuario import Usuario
-from Endereco import Endereco
+from main.OBJLivro import OBJLivro 
+from main.Livro import Livro
+from main.Usuario import Usuario
+from main.Endereco import Endereco
 
 
 path = "./dados.xlsx"

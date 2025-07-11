@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from Biblioteca import Biblioteca
+from main.Biblioteca import Biblioteca
 
 bib = Biblioteca()
 

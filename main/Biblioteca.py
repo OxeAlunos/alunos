@@ -1,6 +1,6 @@
-from Livro import Livro
-from OBJLivro import OBJLivro
-from Usuario import Usuario
+from main.Livro import Livro
+from main.OBJLivro import OBJLivro
+from main.Usuario import Usuario
 
 class Biblioteca:
 
