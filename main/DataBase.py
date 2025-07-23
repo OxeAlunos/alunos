@@ -5,6 +5,7 @@ from main.Livro import Livro
 from main.Usuario import Usuario
 from main.Endereco import Endereco
 
+import datetime as dtm
 
 path = "./dados.xlsx"
 books_sheet = 'Livros'
@@ -12,27 +13,27 @@ users_sheet = 'Usuarios'
 lendings_sheet = 'Emprestimos'
 devolutions_sheet = 'Devolucoes'
 
-bdf = pd.read_excel(path, books_sheet)
-udf = pd.read_excel(path, users_sheet)
-ldf = pd.read_excel(path, lendings_sheet)
-ddf = pd.read_excel(path, devolutions_sheet)
+booksDF = pd.read_excel(path, books_sheet)
+usersDF = pd.read_excel(path, users_sheet)
+lendingsDF = pd.read_excel(path, lendings_sheet)
+devolutionsDF = pd.read_excel(path, devolutions_sheet)
 
 def add_book(livro):
-    novo_registro = pd.DataFrame(data={
+    new_entry = pd.DataFrame(data={
         'nome': [livro.nome],
         'autor': [livro.autor],
         'genero': [livro.genero], 
         'isbn': [livro.isbn]
         })
     
-    global bdf
+    global booksDF
     global path
-    bdf = pd.concat([bdf, novo_registro], ignore_index=True)
+    booksDF = pd.concat([booksDF, new_entry], ignore_index=True)
     save_data_to_excel()
-    # bdf.to_excel(path,books_sheet)
+    # booksDF.to_excel(path,books_sheet)
 
 def add_user(usuario: Usuario):
-    novo_registro = pd.DataFrame(data={
+    new_entry = pd.DataFrame(data={
         'nome': [usuario.nome],
         'idade': [usuario.idade],
         'cpf': [usuario.cpf], 
@@ -41,35 +42,42 @@ def add_user(usuario: Usuario):
         'endereco': [usuario.endereco]
         })
     
-    global udf
+    global usersDF
     global path
-    udf = pd.concat([udf, novo_registro], ignore_index=True)
+    usersDF = pd.concat([usersDF, new_entry], ignore_index=True)
     save_data_to_excel()
 
-def register_lending():
+def register_lending(livro, usuario):
+    new_entry = {
+        'nome do livro': [livro.nome],
+        'nome do usuario': [usuario.nome],
+        'data de emprestimo': [dtm.datetime] 
+    }
     return
-def register_devolution():
+def register_devolution(livro):
     return
 
 def save_data_to_excel():
     with pd.ExcelWriter(path) as writer:  
-        bdf.to_excel(writer, books_sheet, index=False)
-        udf.to_excel(writer, users_sheet, index=False)
-        ldf.to_excel(writer, lendings_sheet, index=False)
-        ddf.to_excel(writer, devolutions_sheet, index=False)
+        booksDF.to_excel(writer, books_sheet, index=False)
+        usersDF.to_excel(writer, users_sheet, index=False)
+        lendingsDF.to_excel(writer, lendings_sheet, index=False)
+        devolutionsDF.to_excel(writer, devolutions_sheet, index=False)
 
 def list_books():
-    print(bdf)
-    # return bdf
+    
+    
+    print(booksDF)
+    # return booksDF
 
 def list_users():
-    print(udf)
+    print(usersDF)
 
 def list_lendings():
-    print(udf)
+    print(usersDF)
 
 def list_devolutions():
-    print(udf)
+    print(usersDF)
 
 if __name__ == '__main__':
    li = Livro('aaadw','adawd','awdawd','awdawd','1234567890123','2001')
@@ -80,7 +88,7 @@ if __name__ == '__main__':
    add_user(us)
    list_users()
 
-    # bdf = bdf.drop(bdf.index)
-    # bdf = bdf.drop(columns= bdf.columns)
+    # booksDF = booksDF.drop(booksDF.index)
+    # booksDF = booksDF.drop(columns= booksDF.columns)
     # salvarDadosNoExcel()
     # listarLivros()
