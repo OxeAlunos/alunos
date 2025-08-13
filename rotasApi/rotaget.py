@@ -2,7 +2,6 @@ from fastapi import APIRouter
 from Biblioteca import Biblioteca
 
 bib = Biblioteca()
-
 router = APIRouter()
 
 @router.get('/')

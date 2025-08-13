@@ -1,7 +1,7 @@
 from rotasApi.rotaget import bib
 from fastapi import APIRouter
-router = APIRouter()
 
+router = APIRouter()
 
 @router.put('/livro/emprestar')
 def emprestarLivro():

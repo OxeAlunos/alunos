@@ -1,6 +1,6 @@
 from Livro import Livro
 from OBJLivro import OBJLivro
-from Usuario import Usuario
+from usuario import Usuario
 
 class Biblioteca:
 
