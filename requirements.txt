@@ -1,3 +1,5 @@
 fastapi[standard]
 pandas
 openpyxl
+pytest
+httpx
